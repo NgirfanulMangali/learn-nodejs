@@ -1,5 +1,5 @@
-const sayHello = require('./module');
+const myModule = require('./myModule');
 
-sayHello('John');
-sayHello('Peter');
-sayHello('Rohit');
+console.log(myModule.foo); // logs 'bar'
+myModule.myFunction1(); // logs 'Hello from myFunction1!'
+myModule.myFunction2(); // logs 'Hello from myFunction2!'

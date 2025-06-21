@@ -1,15 +1,21 @@
 const EventEmitter = require('events');
 const myEmitter = new EventEmitter();
 
-// Listener function
-const greetBirthday = (name, newAge) => {
-    // name = John
-    // newAge = 24
-    console.log(`Happy Birthday ${name}. You are now ${newAge}!`);
+// Listener Function 1 - sayHi
+const sayHi = () => {
+    console.log('Hi User');
 }
 
-// Listening for the birthdayEvent
-myEmitter.on('birthdayEvent', greetBirthday);
+// Listener Function 2 - sayHello
+const sayHello = () => {
+    console.log('Hello User');
+}
 
-// Emitting the birthdayEvent with some extra parameters
-myEmitter.emit('birthdayEvent', 'John', '24');
+// Registering sayHi function as listener
+myEmitter.on('userJoined', sayHi);
+
+// Emitting the event
+myEmitter.emit('userJoined');
+
+// Registering sayHello function as listener
+myEmitter.on('userJoined', sayHello);

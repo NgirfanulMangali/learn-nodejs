@@ -1,25 +1,14 @@
-const http = require('http');
+const { createServer } = require('node:http');
 
-const server = http.createServer((req, res) => {
-    if(req.url === '/'){
-        res.writeHead(200, {'content-type': 'text/html'});
-        res.write('<h1>Home Page</h1>');
-        res.end();
-    } else if(req.url === '/about'){
-        res.writeHead(200, {'content-type': 'text/html'});
-        res.write('<h1>About Page</h1>');
-        res.end();
-    } else if(req.url === '/contact'){
-        res.writeHead(200, {'content-type': 'text/html'});
-        res.write('<h1>Contact Page</h1>');
-        res.end();
-    } else {
-        res.writeHead(404, {'content-type': 'text/html'});
-        res.write('<h1>404, Resource Not Found <a href="/">Go Back Home</a></h1>');
-        res.end();
-    }
-})
+const hostname = '127.0.0.1';
+const port = 3000;
 
-server.listen(5000, () => {
-    console.log('Server listening at port 5000');
-})
+const server = createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});

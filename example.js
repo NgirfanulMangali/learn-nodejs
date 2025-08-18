@@ -1,8 +1,12 @@
-function isAdult(user) {
-    return user.age >= 18;
-}
-var justine = {
-    name: 'Justine',
-    age: 'Secret!',
-};
-var isJustineAnAdult = isAdult(justine, "I shouldn't be here!");
+const fs = require('node:fs');
+
+fs.readFile('/file.json', (err, data) => {
+  if (err) {
+    // handle error
+    console.log(err);
+    return;
+  }
+
+  // no errors, process data
+  console.log(data);
+});

@@ -1,10 +1,8 @@
-const fs = require('fs');
+const fs = require('node:fs');
+const util = require('node:util');
 
-fs.readdir('./myFolder', (err, files) => {
-    if (err) {
-        console.log(err);
-        return;
-    }
-    console.log('Directory read successfully! Here are the files:');
-    console.log(files);
-})
+async function example() {
+  const open = util.promisify(fs.open);
+  const fd = await open('/Users/joe/test.txt', 'r');
+}
+example();

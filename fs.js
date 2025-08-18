@@ -1,13 +1,9 @@
-// Import fs module
-const fs = require('fs');
-
-// Present Working Directory: C:\Desktop\NodeJSTut
-// Making a new directory called ./myFolder:
-
-fs.mkdir('./myFolder', (err) => {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log('Folder Created Successfully');
-    }
-})
+import { createServer } from 'node:http';
+const server = createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hello World!\n');
+});
+// starts a simple http server locally on port 3000
+server.listen(3000, '127.0.0.1', () => {
+  console.log('Listening on 127.0.0.1:3000');
+});

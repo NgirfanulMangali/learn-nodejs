@@ -1,13 +1,19 @@
 const fs = require('fs');
 
-try{
-    // Write to file synchronously
-    fs.writeFileSync('./myFolder/myFileSync.txt', 'This is a sample text file created using Node.js! kwkwkwkwkwwkwk', {encoding: 'utf-8'});
-    console.log('Write operation successful');
 
-  
+const data = 
+  {  id: 1,
+    description: 'Buy groceries',
+    status: 'done',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()}
+;
 
-} catch(err){
-    console.log('Error occurred!');
+fs.writeFile('./myFolder/myFile.json', JSON.stringify(data, null, 2), (err) => {
+  if (err) {
     console.log(err);
-}
+    return;
+  } else {
+    console.log('Written to file successfully!');
+  }
+});
